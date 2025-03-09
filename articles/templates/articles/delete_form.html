@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block title %}{{object.title}}{% endblock title %}
+{% block content %}
+<a class="secondary-text" href="{% url 'articles:article' object.slug %}">❌ Cancel</a>
+<h1 class="primary-text">Delete Article {{object.title}} ?</h1>
+<form class="delete-form" method='post'>
+    {% csrf_token %}
+    <input type="submit" value="Submit">
+</form>
+{% endblock content %}
+

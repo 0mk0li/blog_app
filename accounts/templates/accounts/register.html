@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block title %}Title{% endblock title %}
+{% block content %}
+<form class="validated-form" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input class="secondary-btn" type="submit" value="Submit">
+</form>
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}{{article.title}}{% endblock title %}
+
+{% block content %}
+<a class="secondary-text" href="{% url 'articles:all-articles'%}">⬅️ back to all articles</a>
+<div class="article-data">
+    <p class="secondary-text">{{article.author}}</p>
+    <p class="secondary-text">{{article.created_at}}</p>
+</div>
+{% if request.user == article.author %}
+<div class="actions">
+    <a class="secondary-text" href="{% url 'articles:edit-article' article.slug %}">📝 edit</a>
+    <i class="secondary-text">||</i>
+    <a class="secondary-text"href="{% url 'articles:delete-article' article.slug %}">🗑️ delete</a>
+</div>
+{% endif %}
+<h1 class="primary-text">{{article.title}}</h1>
+{% if article.description %}
+    <h3 class="secondary-text">{{article.description}}</h3>
+{% endif %}
+
+
+{% if article.image %}
+    <img class="article-image" src="{{article.image.url}}" alt="{{article.title}}">
+{% endif %}
+<p class="secondary-text">{{article.content}}</p>
+{% endblock content %}
+
+

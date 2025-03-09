@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %}All Articles{% endblock title %}
+{% block content %}
+<h1 class="primary-text">All Articles</h1>
+{% for article in articles%}
+<div class='article'>
+    <div class="article-contents">
+        <p class="secondary-text">{{article.author}}</p>
+        <h2 class="primary-text"><a class="primary-text" href="{% url "articles:article" article.slug %}">{{article.title}}</a></h2>
+        <p class="secondary-text">{{article.description}}</p>
+    </div>
+  <a class="secondary-text" href="{% url "articles:article" article.slug %}">Read post ➡️</a> 
+</div>
+<hr class="divider">
+{% endfor %}
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}Write your own{% endblock title %}
+{% block content %}
+<div>
+     {% if object.slug %}
+            <a class="secondary-text" href="{% url 'articles:article' object.slug %}">⬅️ Back</a>
+        {% else %}
+            <a class="secondary-text" href="{% url 'articles:all-articles'%}">❌ Cancel</a>
+        {% endif %}
+   <div>
+        <h1 class="primary-text">Create Articles</h1>
+       
+        <form class="validated-form" method='post' enctype="multipart/form-data">
+            {%csrf_token%}
+            {{form.as_p}}
+            <input class="submit-btn" type="submit" value="Submit">
+        </form>
+   </div>
+</div>
+{% endblock content %}
+
